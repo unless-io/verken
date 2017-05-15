@@ -10,10 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514200157) do
+ActiveRecord::Schema.define(version: 20170514201547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "criteria", force: :cascade do |t|
+    t.integer  "exploration_id"
+    t.string   "title"
+    t.string   "type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["exploration_id"], name: "index_criteria_on_exploration_id", using: :btree
+  end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "criterium_id"
+    t.integer  "user_id"
+    t.integer  "rating"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["criterium_id"], name: "index_evaluations_on_criterium_id", using: :btree
+    t.index ["item_id"], name: "index_evaluations_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_evaluations_on_user_id", using: :btree
+  end
+
+  create_table "explorations", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "creator_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["creator_id"], name: "index_explorations_on_creator_id", using: :btree
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "exploration_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "photo_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["exploration_id"], name: "index_items_on_exploration_id", using: :btree
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.integer  "item_id"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_links_on_item_id", using: :btree
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "exploration_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["exploration_id"], name: "index_participants_on_exploration_id", using: :btree
+    t.index ["user_id"], name: "index_participants_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +85,19 @@ ActiveRecord::Schema.define(version: 20170514200157) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "criteria", "explorations"
+  add_foreign_key "evaluations", "criteria"
+  add_foreign_key "evaluations", "items"
+  add_foreign_key "evaluations", "users"
+  add_foreign_key "explorations", "users", column: "creator_id"
+  add_foreign_key "items", "explorations"
+  add_foreign_key "links", "items"
+  add_foreign_key "participants", "explorations"
+  add_foreign_key "participants", "users"
 end
