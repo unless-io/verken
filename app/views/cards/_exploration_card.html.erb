@@ -1,0 +1,55 @@
+<div class="exploration-card">
+  <div class="left">
+    <%= link_to dashboard_exploration_path(exploration), class: "header-link" do %>
+    <div class="card-header">
+      <h3>
+        <%= exploration.title.upcase %>
+      </h3>
+      <div class="divider"></div>
+    </div>
+    <% end %>
+    <div class="exploration-information">
+      <p>
+        <%= exploration.criteria.length %>
+        <span>
+          criteria
+        </span>
+      </p>
+      <%= link_to "+", dashboard_exploration_path(exploration), class: "add-button button-gray" %>
+    </div>
+    <div class="exploration-information">
+      <p>
+        <%= exploration.items.length %>
+        <span>
+          items
+        </span>
+      </p>
+      <%= link_to "+", dashboard_exploration_path(exploration, active: "new_item"), class: "add-button button-gray" %>
+    </div>
+  </div>
+  <div class="right">
+    <% exploration.items.order(score: "DESC").limit(3).each_with_index do |item, index| %>
+      <%= link_to dashboard_exploration_item_path(exploration, item), class: "item" do %>
+      <div class="index">
+          <%= index + 1 %>.
+        </div>
+        <div class="prize-and-completion">
+          <i class="fa fa-trophy"></i>
+          <p>
+            <%= item.evaluations.length %>
+            /
+            <%= exploration.criteria.length %>
+          </p>
+        </div>
+        <p class="title">
+          <%= item.title %>
+        </p>
+        <div class="orb">
+          <p>
+            <%= item.score.round(1) %>
+          </p>
+        </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

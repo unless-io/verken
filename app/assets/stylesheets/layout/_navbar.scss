@@ -1,131 +1,102 @@
-/* Main class */
-.navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
-  transition: all 0.3s ease;
-  display: flex;
-  height: 70px;
-  padding: 0px 30px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Optional class to fix the navbar on top */
-.navbar-wagon-fixed {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
-  width: 100%;
-}
-
-/* Navbar logo */
-.navbar-wagon-brand img {
-  width: 50px;
-}
-
-/* Navbar right section (with form, links, button) */
-.navbar-wagon-right {
+.navbar-verken {
+  z-index: 9999;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding-right: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 75px;
+  .logo-small {
+    margin: 20px 40px;
+  }
+  .nav-block {
+    background-color: white;
+    transform: rotate(45deg);
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    .clearfix {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      &:hover #sub {
+        display: flex;
+      }
+    }
+    &:hover .clearfix {
+      display: block;
+    }
+    &:hover #sub {
+      display: flex;
+    }
+    .nav-block-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      &:hover {
+        text-decoration: none;
+        color: black;
+      }
+      i {
+        font-size: 20px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
 }
 
-/* Navbar item */
-.navbar-wagon-item {
-  flex: 0 1 auto;
-  cursor: pointer;
-  padding: 0 20px;
+#sub:after{
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  background-color: transparent;
+  top:-20px;
+  right: 0;
 }
 
-/* Navbar standard link */
-.navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
-}
-.navbar-wagon-link:hover {
-  color: #da552f;
-  text-decoration: none;
+#sub{
+  display: none;
+  transform: rotate(-45deg);
+  height: 100px;
+  width: 130px;
+  padding: 10px;
+  background:$gray;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  position:absolute;
+  z-index:2;
+  .divider {
+    width: 90%;
+    border-bottom: 1px solid white;
+  }
+  a {
+    color: white;
+    text-align: left;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
 }
 
-/* Navbar right button */
-.navbar-wagon-button {
-  margin-left: 10px;
-  padding: 0 20px;
-  border-radius: 20em;
-  line-height: 40px;
-  background-color: #D23333;
-  color: white;
-  font-size: 14px;
-  border: 2px solid #D23333;
-}
-.navbar-wagon-button:hover {
-  color: white;
-  background: #D23333;
-  border-color: #ac2626;
-}
-
-/* Navbar search form */
-.navbar-wagon-search {
-  flex: 0 1 300px;
-  display: flex;
+.single-item {
   justify-content: flex-end;
-  padding: 0 10px;
-  position: relative;
-}
-.navbar-wagon-search-btn {
-  line-height: 40px;
-  color: #E6E6E6;
-  border: none;
-  background: transparent;
-  position: absolute;
-  right: 14px;
-  top: -2px;
-  z-index: 1;
-}
-.navbar-wagon-search-input {
-  flex: 0 1 300px;
-  transition: all 0.15s ease;
-  line-height: 40px;
-  font-weight: lighter;
-  color: #666666;
-  border: 1px solid #E6E6E6;
-  border-radius: 5px;
-  padding: 0 10px;
-  font-size: 14px;
-  outline: none;
-}
-.navbar-wagon-search-input:focus  {
-  border: 1px solid #CCCCCC;
 }
 
-/* Navbar dropdown menu */
-.navbar-wagon-dropdown-menu {
-  margin-top: 15px;
-  box-shadow: 1px 1px 4px #E6E6E6;
-  border-color: #E6E6E6;
+.multi-item {
+  justify-content: space-between;
 }
-.navbar-wagon-dropdown-menu li > a {
-  transition: color 0.3s ease;
-  font-weight: lighter !important;
-  color: #999999 !important;
-  font-size: 15px !important;
-  line-height: 22px !important;
-  padding: 10px 20px;
-}
-.navbar-wagon-dropdown-menu li > a:hover {
-  background: transparent !important;
-  color: black !important;
-}
-.navbar-wagon-dropdown-menu:before {
-  content: ' ';
-  height: 10px;
-  width: 10px;
-  position: absolute;
-  right: 10px;
-  top: -6px;
-  background-color: white;
-  transform: rotate(45deg);
-  border-left: 1px solid #E6E6E6;
-  border-top: 1px solid #E6E6E6;
-}
+

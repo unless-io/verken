@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
   def show
     @exploration = Exploration.new
+    @explorations = Exploration.where(creator: current_user).paginate(page: params[:page], per_page: 3)
   end
 
   def edit

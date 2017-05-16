@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.references :exploration, foreign_key: true
       t.string :title
       t.text :description
-      t.string :photo_url
+      t.string :photo
 
       t.timestamps
     end

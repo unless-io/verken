@@ -1,0 +1,28 @@
+.green-wrapper {
+  width: 100%;
+  background-color: $green;
+  height: 100vh;
+  h2 {
+    color: white;
+    position: relative;
+  }
+  .counter {
+    position: absolute;
+    font-size: 20px;
+    margin-left: 6px;
+    top: 0px;
+    right: -30px;
+  }
+}
+
+.white-wrapper {
+  width: 100%;
+  background-color: white;
+  height: 100vh;
+}
+
+.wrapper-align {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}

@@ -1,0 +1,19 @@
+.breadcrumbs {
+  z-index: 99999998;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  font-size: 12px;
+  a {
+    color: $yellow;
+    text-decoration: underline;
+    &:hover {
+      color: $yellow;
+      text-decoration: underline;
+    }
+  }
+  span {
+    text-decoration: none;
+    color: $black;
+  }
+}

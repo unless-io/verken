@@ -3,7 +3,7 @@ class CreateCriteria < ActiveRecord::Migration[5.0]
     create_table :criteria do |t|
       t.references :exploration, foreign_key: true
       t.string :title
-      t.string :type
+      t.string :question_type
 
       t.timestamps
     end

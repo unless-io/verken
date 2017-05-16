@@ -1,7 +1,9 @@
-class ExplorationsController < ApplicationController
+class Dashboard::ExplorationsController < ApplicationController
   before_action :set_exploration, only: [:show, :edit, :update, :destroy]
 
   def show
+    @criterium = Criterium.new
+    @item = Item.new
   end
 
   def create

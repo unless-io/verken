@@ -2,9 +2,9 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-$base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+@import url("https://fonts.googleapis.com/css?family=Source+Sans:400,600,700, 900|Dosis:400,600,800");
+$base-font: "Source Sans", "Helvetica", "sans-serif";
+$header-font: "Source Sans", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -28,7 +28,10 @@ $brand-color: #D23333;
 
 $red: #EE5F5B;
 $blue: #469AE0;
-$yellow: #FDB631;
+$yellow: #E6CB9E;
 $orange: #E67E22;
-$green: #32B796;
-$gray: #000000;
+$green: #B1C0B1;
+$gray: #D8D8D8;
+$black: #757575;
+
+

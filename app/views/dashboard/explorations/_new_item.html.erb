@@ -1,0 +1,16 @@
+<div class="cards-container">
+  <div class="cards cards-height">
+    <div class="form-container">
+    <h4>
+      ADD A NEW ITEM
+    </h4>
+      <%= simple_form_for item, url: dashboard_exploration_items_path(exploration) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= f.submit "Add item", class: "button-verken" %>
+      <% end %>
+    </div>
+  </div>
+</div>

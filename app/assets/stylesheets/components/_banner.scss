@@ -1,0 +1,37 @@
+.banner {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.banner-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  text-align: center;
+  font-family: "Dosis", "Helvetica", "sans-serif";
+  font-weight: 800;
+  background-image: image-url('banner.jpg');
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 100% auto;
+  padding-bottom: 10px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.logo-large {
+  font-size: 200pt;
+  line-height: 230px;
+}
+
+.logo-small {
+  font-size: 20pt;
+  line-height: 23px;
+}

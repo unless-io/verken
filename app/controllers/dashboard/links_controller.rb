@@ -1,4 +1,4 @@
-class LinksController < ApplicationController
+class Dashboard::LinksController < ApplicationController
   before_action :set_exploration
   before_action :set_item
   before_action :set_link

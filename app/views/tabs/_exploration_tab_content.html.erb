@@ -1,0 +1,20 @@
+<div class="tabs">
+  <div class="tab-with-option">
+    <%= link_to "ITEMS", dashboard_exploration_path(exploration, active: "items"), 'data-target': "#items", class:"regular tab#{items.first}" %>
+    <%= link_to "+", dashboard_exploration_path(exploration, active: "new_item"), 'data-target': "#new-item", class:"tab add-button button-white#{new_item.first}" %>
+  </div>
+  <p>
+    /
+  </p>
+  <%= link_to "CRITERIA", dashboard_exploration_path(exploration, active: "criteria"), 'data-target': "#criteria", class:"regular tab#{criteria.first}"  %>
+</div>
+
+<div class="tab-content<%= items.second %>" id="items">
+  <%= render partial: "items", locals: { exploration: exploration } %>
+</div>
+<div class="tab-content<%= new_item.second %>" id="new-item">
+  <%= render partial: "new_item", locals: { exploration: exploration, item: item } %>
+</div>      
+<div class="tab-content<%= criteria.second %>" id="criteria">
+  <%= render partial: "criteria", locals: { exploration: exploration } %>
+</div>

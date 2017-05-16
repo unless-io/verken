@@ -1,8 +1,9 @@
-class ItemsController < ApplicationController
+class Dashboard::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_exploration, only: [:create, :update, :destroy]
 
   def show
+    @pending_evaluation = Evaluation.where(item: @item, status: "pending").first
   end
 
   def new
@@ -14,6 +15,9 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to dashboard_exploration_item_path(@exploration, @item)
       flash[:notice] = "Succesfully created a new item."
+      @exploration.criteria.each do |criterium|
+        @item.evaluations << Evaluation.create(criterium: criterium, user: current_user, rating: "")
+      end
     else
       render :new
       flash[:danger] = "Sorry! Something went wrong."
@@ -54,6 +58,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :description, :photo_url)
+    params.require(:item).permit(:title, :description, :photo, :photo_cache)
   end
 end

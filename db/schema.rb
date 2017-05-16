@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514201547) do
+ActiveRecord::Schema.define(version: 20170515183356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20170514201547) do
   create_table "criteria", force: :cascade do |t|
     t.integer  "exploration_id"
     t.string   "title"
-    t.string   "type"
+    t.string   "question_type"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["exploration_id"], name: "index_criteria_on_exploration_id", using: :btree
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 20170514201547) do
     t.integer  "criterium_id"
     t.integer  "user_id"
     t.integer  "rating"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "status",       default: "pending"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.index ["criterium_id"], name: "index_evaluations_on_criterium_id", using: :btree
     t.index ["item_id"], name: "index_evaluations_on_item_id", using: :btree
     t.index ["user_id"], name: "index_evaluations_on_user_id", using: :btree
@@ -49,9 +50,10 @@ ActiveRecord::Schema.define(version: 20170514201547) do
     t.integer  "exploration_id"
     t.string   "title"
     t.text     "description"
-    t.string   "photo_url"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "photo"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.float    "score",          default: 0.0
     t.index ["exploration_id"], name: "index_items_on_exploration_id", using: :btree
   end
 

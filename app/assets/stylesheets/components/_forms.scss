@@ -1,0 +1,39 @@
+.form-container {
+  height: 50vh;
+  width: 80%;
+  margin: 0 auto;
+  h4 {
+    color: white;
+    font-weight: 600;
+  }
+  form {
+    width: 100%;
+    label {
+      width: 145px;
+      font-weight: 400;
+      font-size: 15px;
+    }
+    textarea {
+      height: 150px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    .form-group {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      color: $black;
+      input, textarea {
+        color: $black;
+      }
+    }
+  }
+  .button-align {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px auto;
+    width: 100%;
+  }
+}

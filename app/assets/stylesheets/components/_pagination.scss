@@ -1,0 +1,17 @@
+.pagination {
+  color: white;
+  .current {
+    color: $green;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-style: normal;
+  }
+  a {
+    color: white;
+  }
+}

@@ -1,0 +1,37 @@
+<div class="personal-info-container">
+  <div class="actions">
+    <%= link_to edit_user_registration_path do %>
+      <i class="fa fa-pencil"></i>
+    <% end %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out"></i>
+    <% end %>
+  </div>
+  <h2>
+    <%= current_user.full_name %>
+  </h2>
+  <div class="divider"></div>
+  <div class="personal-info">
+    <div class="label">
+      email:
+    </div>
+    <div class="info">
+      <%= current_user.email %>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-container">
+  <h2>
+    ADD A NEW EXPLORATION
+  </h2>
+  <%= simple_form_for @exploration, url: dashboard_explorations_path do |f| %>
+    <%= f.input :title, placeholder: 'What are you researching?' %>
+    <%= f.input :description, placeholder: 'Anything you’d like to add? This would be a good place to specifysome general goals you’d like to keep in mind.' 
+    %>
+    <div class="button-align">
+      <%= f.submit "Next", class: "button-verken" %>
+    </div>
+  <% end %>
+</div>

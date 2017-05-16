@@ -1,4 +1,4 @@
-class CriteriaController < ApplicationController
+class Dashboard::CriteriaController < ApplicationController
   before_action :set_criterium, only: [:edit]
   before_action :set_exploration, except: [:edit]
 
@@ -8,6 +8,9 @@ class CriteriaController < ApplicationController
     if @criterium.save
       redirect_to dashboard_exploration_path(@exploration)
       flash[:notice] = "Succesfully added a new criterium."
+      @exploration.items.each do |item|
+        item.evaluations << Evaluation.create(user: current_user, criterium: @criterium, rating: "")
+      end
     else
       redirect_to dashboard_exploration_path(@exploration)
       flash[:danger] = "Sorry! Something went wrong"
@@ -48,6 +51,6 @@ class CriteriaController < ApplicationController
   end
 
   def criterium_params
-    params.require(:criterium).permit(:title, :type)
+    params.require(:criterium).permit(:title, :question_type)
   end
 end

@@ -1,0 +1,46 @@
+<div class="breadcrumbs">
+  <p>
+    <%= link_to 'dashboard', dashboard_path %> < <span><%= exploration.title %></span>
+  </p>
+</div>
+<div class="exploration-item-info">
+  <div class="header">
+    <div class="title">
+      <h2>
+        <%= @exploration.title %>
+      </h2>
+    </div>
+    <div class="info">
+      <div class="exploration-information">
+        <p>
+          <%= exploration.criteria.length %>
+          <span>
+            criteria
+          </span>
+        </p>
+      </div>
+      <div class="exploration-information">
+        <p>
+          <%= exploration.items.length %>
+          <span>
+            items
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <p>
+    <%= @exploration.description %>
+  </p>
+</div>
+<div class="form-container">
+<h2>
+    ADD A NEW CRITERIUM
+    </h2>
+  <%= simple_form_for @criterium, url: dashboard_exploration_criteria_path(@exploration) do |f| %>
+  <%= f.input :title, label: "Your criterium" %>
+  <%= f.input :question_type, collection: %w(stars 1-10), selected: "1-10"  %>
+  <%= f.submit "Add Criterium", class: "button-verken" %>
+  <% end %>
+</div>

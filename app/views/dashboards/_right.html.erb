@@ -1,0 +1,13 @@
+<div class="cards-container">
+  <div class="header">
+    <h2>
+      YOUR EXPLORATIONS <span class="counter">(<%= @explorations.length %>)</span>
+    </h2>
+  </div>
+  <div class="cards">
+    <% @explorations.each do |exploration| %>
+      <%= render partial: "cards/exploration_card", locals: { exploration: exploration } %>
+    <% end %>
+  </div>
+  <%= will_paginate @explorations %>
+</div>

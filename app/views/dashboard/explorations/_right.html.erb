@@ -1,0 +1,27 @@
+<div class="tab-container">
+  <% if params[:active] == "new_item" %>
+  <%= render partial: "tabs/exploration_tab_content", locals: { 
+    exploration: @exploration, 
+    item: @item,
+    new_item: [" active", ""],
+    criteria: ["", " hidden"],
+    items: ["", " hidden"]
+  } %>
+  <% elsif params[:active] == "criteria" %>
+  <%= render partial: "tabs/exploration_tab_content", locals: { 
+    exploration: @exploration, 
+    item: @item, 
+    new_item: ["", " hidden"],
+    criteria: [" active", ""],
+    items: ["", " hidden"]
+  } %>
+  <% else %>
+  <%= render partial: "tabs/exploration_tab_content", locals: { 
+    exploration: @exploration, 
+    item: @item, 
+    new_item: ["", " hidden"],
+    criteria: ["", " hidden"],
+    items: [" active", ""]
+  } %>
+  <% end %>
+</div>
