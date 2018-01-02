@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   namespace :dashboard do
     resources :explorations, except: [:index, :new] do
       collection do
-        get :results
         post :join
         delete :leave
+      end
+      member do 
+        get :results
       end
       resources :items, except: [:index] do
         resources :links, only: [:create, :update, :destroy]

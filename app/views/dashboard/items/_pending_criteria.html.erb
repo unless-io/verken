@@ -1,0 +1,24 @@
+<div class="cards-container">
+  <div class="cards cards-height">
+    <div class="star-form-container">
+      <% if pending_evaluation.nil? %>
+      <h4>
+        No pending questions
+      </h4>
+      <% else %>
+      <h4>
+        <%= pending_evaluation.criterium.title %>
+      </h4>
+      <%= simple_form_for pending_evaluation, url: dashboard_exploration_item_evaluation_path(item.exploration, item, pending_evaluation) do |f| %>
+      <%= f.input :status, as: :hidden, input_html: { value: "answered" } %>
+      <%= render partial: "shared/stars" %>
+      <%= f.submit "Submit answer", class: "button-verken" %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+

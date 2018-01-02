@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515183356) do
+ActiveRecord::Schema.define(version: 20170706115418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 20170515183356) do
     t.integer  "exploration_id"
     t.string   "title"
     t.string   "question_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.float    "multiplier",     default: 1.0
     t.index ["exploration_id"], name: "index_criteria_on_exploration_id", using: :btree
   end
 
@@ -41,8 +42,9 @@ ActiveRecord::Schema.define(version: 20170515183356) do
     t.string   "title"
     t.text     "description"
     t.integer  "creator_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "shared",      default: false
     t.index ["creator_id"], name: "index_explorations_on_creator_id", using: :btree
   end
 
@@ -74,6 +76,15 @@ ActiveRecord::Schema.define(version: 20170515183356) do
     t.index ["user_id"], name: "index_participants_on_user_id", using: :btree
   end
 
+  create_table "shared_explorations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "exploration_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["exploration_id"], name: "index_shared_explorations_on_exploration_id", using: :btree
+    t.index ["user_id"], name: "index_shared_explorations_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -102,4 +113,6 @@ ActiveRecord::Schema.define(version: 20170515183356) do
   add_foreign_key "links", "items"
   add_foreign_key "participants", "explorations"
   add_foreign_key "participants", "users"
+  add_foreign_key "shared_explorations", "explorations"
+  add_foreign_key "shared_explorations", "users"
 end

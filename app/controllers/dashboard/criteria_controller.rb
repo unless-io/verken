@@ -5,6 +5,7 @@ class Dashboard::CriteriaController < ApplicationController
   def create
     @criterium = Criterium.new(criterium_params)
     @criterium.exploration = @exploration
+    @criterium.question_type = "1-10"
     if @criterium.save
       redirect_to dashboard_exploration_path(@exploration)
       flash[:notice] = "Succesfully added a new criterium."

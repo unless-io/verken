@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="white-wrapper wrapper-align">
+        <%= render partial: "results_left", locals: { exploration: @exploration } %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="green-wrapper wrapper-align">
+        <%= render partial: "results_right", locals: { exploration: @exploration } %>
+      </div>
+    </div>
+  </div>
+</div>

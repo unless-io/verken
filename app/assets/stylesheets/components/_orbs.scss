@@ -12,3 +12,19 @@
         font-size: 12px;
     }
 }  
+
+.orb-inline {
+    width: 25px;
+    height: 25px;
+    background-color: $yellow;
+    border-radius: 50%;
+    color: white;
+    display: inline-flex;
+    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+}
+
+.orb.marged-top-bottom {
+    margin: 20px 0;
+}

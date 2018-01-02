@@ -1,6 +1,6 @@
 <div class="cards-container">
   <div class="cards cards-height">
-    <% @items = exploration.items.paginate(page: params[:page], per_page: 5) %>
+    <% @items = exploration.items.order(score: "DESC").paginate(page: params[:page], per_page: 5) %>
     <% @items.each do |item| %>
     <%= link_to dashboard_exploration_item_path(exploration, item), class: "item-card" do %>
     <% unless item.photo.nil? %>

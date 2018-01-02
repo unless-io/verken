@@ -1,5 +1,5 @@
 class Dashboard::ExplorationsController < ApplicationController
-  before_action :set_exploration, only: [:show, :edit, :update, :destroy]
+  before_action :set_exploration, only: [:show, :edit, :update, :destroy, :results]
 
   def show
     @criterium = Criterium.new

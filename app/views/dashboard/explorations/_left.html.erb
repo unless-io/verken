@@ -35,12 +35,13 @@
   </p>
 </div>
 <div class="form-container">
-<h2>
+  <h2>
     ADD A NEW CRITERIUM
-    </h2>
+  </h2>
   <%= simple_form_for @criterium, url: dashboard_exploration_criteria_path(@exploration) do |f| %>
   <%= f.input :title, label: "Your criterium" %>
-  <%= f.input :question_type, collection: %w(stars 1-10), selected: "1-10"  %>
+  <%= f.input :multiplier, collection: [1, 1.5, 2] %>
+
   <%= f.submit "Add Criterium", class: "button-verken" %>
   <% end %>
 </div>

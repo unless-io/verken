@@ -1,0 +1,14 @@
+<div class="tabs">
+<%= link_to "PENDING", dashboard_exploration_item_path(item.exploration, item, active: "pending_questions"), 'data-target': "#pending_evaluation", class:"regular tab#{pending_questions.first}" %>
+    <p>
+        /
+    </p>
+    <%= link_to "CHECKED", dashboard_exploration_item_path(item.exploration, item, active: "checked_criteria"), 'data-target': "#checked_criteria", class:"regular tab#{checked_criteria.first}"  %>
+</div>
+
+<div class="tab-content<%= pending_questions.second %>" id="pending_evaluation">
+    <%= render partial: "pending_criteria", locals: { item: item, pending_evaluation: pending_evaluation } %>
+</div>
+<div class="tab-content<%= checked_criteria.second %>" id="checked_criteria">
+    <%= render partial: "checked_criteria", locals: { item: item } %>
+</div>  

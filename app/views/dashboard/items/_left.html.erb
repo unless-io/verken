@@ -1,0 +1,36 @@
+<div class="breadcrumbs">
+  <p>
+    <%= link_to 'dashboard', dashboard_path %> < <%= link_to "exploration", dashboard_exploration_path(item.exploration) %> < <span><%= item.title.downcase %></span>
+  </p>
+</div>
+<div class="exploration-item-info">
+  <div class="header">
+    <div class="title">
+      <h2>
+        <span class="orb-inline">
+          <%= item.score.round(1) %>
+        </span>
+        <%= item.title %>
+        <% if @item_winner %>
+        <i class="fa fa-trophy"></i>
+        <% end %>
+      </h2>
+    </div>
+    <div class="info">
+      <div class="exploration-information">
+        <p>
+          <%= item.exploration.criteria.length %>
+          <span>
+            criteria
+          </span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+  <div class="divider"></div>
+  <p>
+    <%= item.description %>
+  </p>
+</div>
+<%= cl_image_tag item.photo, width: 300, class: "image-left-center" %>

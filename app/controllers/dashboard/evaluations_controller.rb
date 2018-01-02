@@ -42,9 +42,16 @@ class Dashboard::EvaluationsController < ApplicationController
   def calculate_score
     sum = 0.0
     @item.evaluations.each do |evaluation|
-      sum += evaluation.rating.to_i
+      sum += ( evaluation.rating.to_i * evaluation.criterium.multiplier ) 
     end
-    @item.score = sum / @item.evaluations.length
+
+    division = 0
+
+    @item.criteria.each do |criterium|
+      division += criterium.multiplier
+    end
+
+    @item.score = sum / division
     @item.save
   end
 

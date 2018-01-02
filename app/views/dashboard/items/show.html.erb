@@ -1,28 +1,14 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row no-gutter">
     <div class="col-xs-6">
-    <h3>
-      <%= @item.title %>
-    </h3>
-    <p>
-      <%= @item.description %>
-    </p>
-    <%= cl_image_tag @item.photo, width: 300 %>
-    <% if @pending_evaluation.nil? %>
-    <h4>
-      No pending questions
-    </h4>
-    <% else %>
-      <%= @pending_evaluation.criterium.title %>
-        <%= simple_form_for @pending_evaluation, url: dashboard_exploration_item_evaluation_path(@item.exploration, @item, @pending_evaluation) do |f| %>
-          <%= f.input :status, as: :hidden, input_html: { value: "answered" } %>
-          <%= f.input :rating, collection: (1..10), selected: 7 %>
-          <%= f.submit %>
-        <% end %>
-    <% end %>
+      <div class="white-wrapper wrapper-align">
+        <%= render partial: "left", locals: { item: @item} %>
+      </div>
     </div>
     <div class="col-xs-6">
-
+      <div class="green-wrapper wrapper-align">
+      <%= render partial: "right", locals: { item: @item, pending_evaluation: @pending_evaluation} %>
+      </div>
     </div>
   </div>
 </div>

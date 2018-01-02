@@ -1,0 +1,25 @@
+<div class="tab-container">
+    <% if params[:active] == "pending_questions" %>
+    <%= render partial: "item_tab_content", locals: { 
+        pending_evaluation: pending_evaluation, 
+        item: item,
+        pending_questions: [" active", ""],
+        checked_criteria: ["", " hidden"]
+    } %>
+    <% elsif params[:active] == "checked_criteria" %>
+    <%= render partial: "item_tab_content", locals: { 
+        pending_evaluation: pending_evaluation, 
+        item: item, 
+        pending_questions: ["", " hidden"],
+        checked_criteria: [" active", ""]
+    } %>
+    <% else %>
+    <%= render partial: "item_tab_content", locals: { 
+        pending_evaluation: pending_evaluation, 
+        item: item, 
+        pending_questions: [" active", ""],
+        checked_criteria: ["", " hidden"]
+    } %>
+    <% end %>    
+</div>
+

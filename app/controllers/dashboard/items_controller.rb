@@ -4,6 +4,7 @@ class Dashboard::ItemsController < ApplicationController
 
   def show
     @pending_evaluation = Evaluation.where(item: @item, status: "pending").first
+    @item_winner = @item.exploration.items.order(score: "DESC").limit(1).first == @item
   end
 
   def new

@@ -1,0 +1,27 @@
+<div class="cards-container">
+  <div class="cards cards-height">
+  <% @evaluation = item.evaluations.paginate(page: params[:page], per_page: 5) %>
+    <% @evaluation.each do |evaluation| %>
+    <div class="criterium-card">
+      <div class="header">
+        <h4>
+          <%= evaluation.criterium.title.upcase %>
+        </h4>
+        <div class="divider"></div>
+      </div>
+      <% if evaluation.criterium.question_type == "star" %>
+      <div class="orb">
+        <i class="fa fa-star"></i>
+      </div>
+      <% else %>
+      <div class="orb">
+        <p>
+          <%= evaluation.rating %>
+        </p>
+      </div>
+      <% end %>
+    </div>
+    <% end %>   
+  </div>
+  <%= will_paginate @evaluation %>
+</div>
